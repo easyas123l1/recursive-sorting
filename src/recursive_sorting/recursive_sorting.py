@@ -1,10 +1,32 @@
 # TO-DO: complete the helper function below to merge 2 sorted arrays
 def merge(arrA, arrB):
-    elements = len(arrA) + len(arrB)
+    first = len(arrA)
+    second = len(arrB)
+    elements = first + second
     merged_arr = [0] * elements
-
-    # Your code here
-
+    i = 0
+    j = 0
+    while i < first and j < second:
+        # check if location on arrA is smaller then arrB
+        if arrA[i] <= arrB[j]:
+            # insert data into merged array we know what index to add by adding i+j
+            merged_arr[i+j] = arrA[i]
+            i += 1
+            if i == first:
+                # i believe this gives us best runtime
+                while j < second:
+                    merged_arr[i+j] = arrB[j]
+                    j += 1
+        # else case for checking smaller value
+        else:
+            # insert data into merged array we know what index to add by adding i+j
+            merged_arr[i+j] = arrB[j]
+            j += 1
+            if j == second:
+                # i believe this gives us best runtime
+                while i < first:
+                    merged_arr[i+j] = arrA[i]
+                    i += 1
 
     return merged_arr
 
@@ -13,7 +35,6 @@ def merge(arrA, arrB):
 def merge_sort(arr):
     # Your code here
 
-
     return arr
 
 
@@ -21,13 +42,11 @@ def merge_sort(arr):
 def merge_in_place(arr, start, mid, end):
     # Your code here
 
-
     return arr
 
 
 def merge_sort_in_place(arr, l, r):
     # Your code here
-
 
     return arr
 
